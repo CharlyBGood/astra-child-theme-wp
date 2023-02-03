@@ -30,7 +30,7 @@ add_action('wp_enqueue_scripts', 'child_enqueue_styles', 15);
 function post_blogs() {
 
 	$labels = array(
-		'name'                  => _x( 'Blog_posts', 'Post Type General Name', 'astra' ),
+		'name'                  => _x( 'Blog', 'Post Type General Name', 'astra' ),
 		'singular_name'         => _x( '', 'Post Type Singular Name', 'astra' ),
 		'menu_name'             => __( 'Blog', 'astra' ),
 		'name_admin_bar'        => __( 'Blog', 'astra' ),
@@ -88,7 +88,7 @@ add_action( 'init', 'post_blogs', 0 );
 function post_podcast() {
 
 	$labels = array(
-		'name'                  => _x( 'Podcast_post', 'Post Type General Name', 'astra' ),
+		'name'                  => _x( 'Podcast', 'Post Type General Name', 'astra' ),
 		'singular_name'         => _x( '', 'Post Type Singular Name', 'astra' ),
 		'menu_name'             => __( 'Podcast', 'astra' ),
 		'name_admin_bar'        => __( 'Podcast', 'astra' ),

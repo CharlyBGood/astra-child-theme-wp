@@ -9,3 +9,17 @@
 	License:      GNU General Public License v2 or later
 
 /* --------------------------------------------------------------------------------------------- */
+
+
+/* .ast-primary-header-bar {
+  background-color: #d30000;
+} */
+
+.site-below-footer-wrap[data-section="section-below-footer-builder"] {
+  background-color: #d30000;
+  /* padding: 0; */
+}
+
+footer a {
+  color: wheat;
+}
