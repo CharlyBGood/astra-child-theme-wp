@@ -10,16 +10,40 @@
 
 /* --------------------------------------------------------------------------------------------- */
 
-
 /* .ast-primary-header-bar {
   background-color: #d30000;
 } */
 
+/* FOOTER  */
+
 .site-below-footer-wrap[data-section="section-below-footer-builder"] {
   background-color: #d30000;
-  /* padding: 0; */
 }
 
-footer a {
-  color: wheat;
+/* STICK FOOTER TO BOTTOM WHEN PAGE CONTENT IS LESS */
+
+#page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.admin-bar #page {
+  min-height: calc(100vh - 32px);
+}
+#page .site-content {
+  flex-grow: 1;
+}
+
+/* TWEAK ARCHIVE/BLOG CONTENT CONTAINER */
+
+.podcast-template-default #content,
+.blog-template-default #content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.blog-template-default .site-content,
+.podcast-template-default .site-content {
+  background-color: #000;
 }
