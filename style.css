@@ -43,7 +43,7 @@
 }
 
 .post-type-archive #content {
-  width: 85%;
+  width: 75%;
   margin: 0 auto;
   flex: 1;
 }
@@ -124,7 +124,7 @@ footer .site-below-footer-wrap {
   }
 
   .blog-template-default #content :where(img[class*="wp-image-"]) {
-    width: 60%;
+    width: 70%;
     float: none;
   }
 
