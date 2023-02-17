@@ -9,15 +9,13 @@
 	License:      GNU General Public License v2 or later
 
 /* --------------------------------------------------------------------------------------------- */
+/* navbar */
 
-/* .ast-primary-header-bar {
-  background-color: #d30000;
-} */
-
-/* FOOTER  */
-
-.site-below-footer-wrap[data-section="section-below-footer-builder"] {
-  background-color: #d30000;
+.main-header-bar-wrap {
+  position: fixed;
+  width: 100%;
+  background: red;
+  top: 0;
 }
 
 /* STICK FOOTER TO BOTTOM WHEN PAGE CONTENT IS LESS */
@@ -25,7 +23,7 @@
 #page {
   display: flex;
   flex-direction: column;
-  /* min-height: 100vh; */
+  min-height: 100vh;
 }
 .admin-bar #page {
   min-height: calc(100vh - 32px);
@@ -47,6 +45,7 @@
 .post-type-archive #content {
   width: 85%;
   margin: 0 auto;
+  flex: 1;
 }
 
 .blog-template-default .site-content,
@@ -54,40 +53,82 @@
   background-color: #000;
 }
 
-.mejs-container .wp-audio-shortcode {
-  background-color: #f2f2f2 !important;
-  color: #333;
-}
-
-a.menu-link {
-  background-color: red;
+button.menu-toggle {
+  background-color: transparent !important;
 }
 
 .type-podcast {
-  background-color: #d300008e;
+  background-color: #d30000;
   color: #000;
-  padding: 0.5em;
+  padding: 1em;
   border-radius: 0.5em;
 }
 
 .type-podcast header h1,
 .type-podcast p {
   color: #f2f2f2 !important;
-  /* font-size: .9em; */
+  font-size: 0.9em;
 }
 
 #mep_0 div.mejs-controls {
-  background-color: #d300008e;
-  border-radius: .3em;
-  margin-top: 1em !important;
+  background-color: transparent;
+  border-radius: 0.3em;
+  opacity: 0.8;
 }
 
 #mep_0 {
   margin-top: 1em;
+  background-color: transparent;
+}
+
+.blog-template-default #content :where(img[class*="wp-image-"]) {
+  max-width: 100%;
+  float: right;
+  padding: 1em;
+  border-radius: 1.3em;
+  width: 50%;
+  padding: 1em;
+  /* position: relative; */
+  /* bottom: 5em; */
+}
+
+.blog-template-default #content {
+  display: flex;
+}
+
+/* FOOTER  */
+
+.site-below-footer-wrap[data-section="section-below-footer-builder"] {
+  background-color: #d30000;
+  padding: 0;
+}
+
+footer .site-below-footer-wrap {
+  margin: 0;
+  padding: 0.5em;
+  position: fixed;
+  bottom: 0;
 }
 
 @media screen and (max-width: 544px) {
   body.archive .ast-archive-description * {
     letter-spacing: 0.1em;
+  }
+
+  .single .post-navigation {
+    padding: 1em 0 0;
+  }
+
+  .site-content {
+    margin: 21% auto;
+  }
+
+  .blog-template-default #content :where(img[class*="wp-image-"]) {
+    width: 60%;
+    float: none;
+  }
+
+  .navigation.post-navigation .nav-links {
+    display: flex;
   }
 }

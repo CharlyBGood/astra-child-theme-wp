@@ -154,6 +154,8 @@ function custom_post_type_class($classes)
 
 		// Agrega un ID con el valor del ID de la entrada
 		$classes[] = 'podcast-' . $post->ID;
+	} else if ('blog' == get_post_type($post->ID)) {
+		$classes[] = 'blog-' . $post->ID;
 	}
 	if (has_post_thumbnail()) {
 		$post_thumbnail_id = get_post_thumbnail_id($post->ID);
@@ -163,9 +165,47 @@ function custom_post_type_class($classes)
 		if (strpos($post_thumbnail_data['mime_type'], 'audio') !== false) {
 			// Agrega la clase "podcast-audio" si el archivo multimedia es un archivo de audio
 			$classes[] = 'podcast-audio';
+		} else if (strpos($post_thumbnail_data['mime_type'], 'image') !== false) {
+			// Agrega la clase "blog-image" si el archivo multimedia es un archivo de imagen
+			$classes[] = 'blog-image';
 		}
 	}
 	return $classes;
 }
 
 add_filter('post_class', 'custom_post_type_class');
+
+
+//   add class to image 
+
+function image_styles($attachment_id)
+{
+	$attachment = get_post($attachment_id);
+	$mime_type = $attachment->post_mime_type;
+
+	// Comprueba si el archivo es una imagen
+	if (strpos($mime_type, 'image/') !== false) {
+
+		// Agrega la clase 'imagen-posicionada' al elemento de la imagen
+		error_log('Se ha cargado una imagen.');
+		add_filter('wp_get_attachment_image_attributes', function ($attr) {
+			$attr['class'] .= ' image_styles';
+			return $attr;
+		});
+	}
+}
+add_action('add_attachment', 'image_styles');
+
+//  avoid wrapping media content into p elements when creating custom post types
+
+function avoid_multimedia_paragraphs($content)
+{
+	// Verify if content comes from wordpress editor
+	if (get_post_type() === 'podcast' || get_post_type() === 'blog' && is_main_query()) {
+		// Remove p elements that wraps imgs and other media files
+		$content = preg_replace('/<p>\s*(<img .* \/>|<audio .*><\/audio>|<video .*><\/video>)\s*<\/p>/', '\1', $content);
+	}
+	return $content;
+}
+
+add_filter('the_content', 'avoid_multimedia_paragraphs', 20);
