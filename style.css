@@ -14,7 +14,7 @@
 .main-header-bar-wrap {
   position: fixed;
   width: 100%;
-  background: red;
+  /* background: red; */
   top: 0;
 }
 
